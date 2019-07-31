@@ -20,7 +20,7 @@ hexo 3.9.0，node 8.11.1，npm 5.7.0
 $ title: 博客名称
 $ subtitle: 副标题
 $ description: 描述
-$ keywords: #关键字
+$ keywords: 关键字
 $ author: 作者名称
 ```
 ### 发布到git需要更改
