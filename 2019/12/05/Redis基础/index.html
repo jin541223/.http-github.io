@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="oauth2.0,">
+  <meta name="keywords" content="Redis,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="OAuth是一种授权机制。数据所有者同意第三方应用进入系统，获取数据。系统就会产生一个短期的令牌供第三方应用使用。 作用授权第三方应用，获取用户的数据。 优点让第三方可以获取到数据，又可以随时撤销。 令牌与密码的区别$ 令牌是短期的，到了失效时间会自动失效，不能修改；密码如果用户自己不修改，就不会变化；$ 令牌可以被用户主动的撤销，撤销后不可再使用；密码不能被撤销；$ 令牌权限有限，比如进入一个院">
-<meta name="keywords" content="oauth2.0">
+<meta name="description" content="常见数据结构 字符串 string 字典 hash 列表 list 集合 Set 有序集合 sortedSet">
+<meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OAuth2.0">
-<meta property="og:url" content="http://yoursite.com/2019/09/03/OAuth2-0/index.html">
+<meta property="og:title" content="Redis基础">
+<meta property="og:url" content="http://yoursite.com/2019/12/05/Redis基础/index.html">
 <meta property="og:site_name" content="zera&#39;s blog">
-<meta property="og:description" content="OAuth是一种授权机制。数据所有者同意第三方应用进入系统，获取数据。系统就会产生一个短期的令牌供第三方应用使用。 作用授权第三方应用，获取用户的数据。 优点让第三方可以获取到数据，又可以随时撤销。 令牌与密码的区别$ 令牌是短期的，到了失效时间会自动失效，不能修改；密码如果用户自己不修改，就不会变化；$ 令牌可以被用户主动的撤销，撤销后不可再使用；密码不能被撤销；$ 令牌权限有限，比如进入一个院">
+<meta property="og:description" content="常见数据结构 字符串 string 字典 hash 列表 list 集合 Set 有序集合 sortedSet">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-04T07:13:35.458Z">
+<meta property="og:updated_time" content="2019-12-05T09:56:31.922Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OAuth2.0">
-<meta name="twitter:description" content="OAuth是一种授权机制。数据所有者同意第三方应用进入系统，获取数据。系统就会产生一个短期的令牌供第三方应用使用。 作用授权第三方应用，获取用户的数据。 优点让第三方可以获取到数据，又可以随时撤销。 令牌与密码的区别$ 令牌是短期的，到了失效时间会自动失效，不能修改；密码如果用户自己不修改，就不会变化；$ 令牌可以被用户主动的撤销，撤销后不可再使用；密码不能被撤销；$ 令牌权限有限，比如进入一个院">
+<meta name="twitter:title" content="Redis基础">
+<meta name="twitter:description" content="常见数据结构 字符串 string 字典 hash 列表 list 集合 Set 有序集合 sortedSet">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/03/OAuth2-0/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/05/Redis基础/">
 
 
 
 
 
-  <title>OAuth2.0 | zera's blog</title>
+  <title>Redis基础 | zera's blog</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/03/OAuth2-0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/05/Redis基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zera">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">OAuth2.0</h1>
+          <h1 class="post-title" itemprop="name headline">Redis基础</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-03T11:43:03+08:00">
-                2019-09-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-05T17:20:58+08:00">
+                2019-12-05
               </time>
             
 
@@ -300,18 +300,13 @@
       
 
       
-        <p>OAuth是一种授权机制。数据所有者同意第三方应用进入系统，获取数据。系统就会产生一个短期的令牌供第三方应用使用。</p>
-<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>授权第三方应用，获取用户的数据。</p>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>让第三方可以获取到数据，又可以随时撤销。</p>
-<h4 id="令牌与密码的区别"><a href="#令牌与密码的区别" class="headerlink" title="令牌与密码的区别"></a>令牌与密码的区别</h4><p>$ 令牌是短期的，到了失效时间会自动失效，不能修改；密码如果用户自己不修改，就不会变化；<br>$ 令牌可以被用户主动的撤销，撤销后不可再使用；密码不能被撤销；<br>$ 令牌权限有限，比如进入一个院子，需要先输入大门的令牌，进入房间内还需要另外的令牌，一般只读令牌的权限小于读写令牌的权限；密码一般都是完整权限；</p>
-<h4 id="获取令牌方式"><a href="#获取令牌方式" class="headerlink" title="获取令牌方式"></a>获取令牌方式</h4><p>获取令牌的方式有四种<br>$ 授权码<br>$ 隐藏式<br>$ 密码式<br>$ 客户端凭证</p>
-<p>无论哪一种方式，第三方应用在申请令牌前，都必须到系统备案，说明自己是身份，然后拿到两个身份识别码：客户端ID和客户端密钥；<br>这样做的目的是为了防止令牌滥用，不备案就不能拿到身份识别码。</p>
-<h4 id="令牌使用"><a href="#令牌使用" class="headerlink" title="令牌使用"></a>令牌使用</h4><p>A 网站在拿到令牌以后，就可以通过API向 B 网站请求数据了，每次请求的API都必须带令牌<br>通过在请求的头信息，增加一个 Authorization 字段</p>
-<h4 id="令牌更新"><a href="#令牌更新" class="headerlink" title="令牌更新"></a>令牌更新</h4><p>令牌到期后，如果需要用户重新将上述流程重复一遍的话，体验就不怎么好了，OAuth2.0允许用户自动更新令牌；</p>
-<p>B 网站颁发令牌的时候，一次性颁发两个令牌，一个用于获取数据，另一个用于获取新的令牌（refresh token 字段）。令牌到期前，用户使用 refresh token 发一个请求，去更新令牌。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://b.com/oauth/token?grant_type=refresh_token&amp;client_id=CLIENT_ID&amp;client_secret=CLIENT_SECRET&amp;refresh_token=REFRESH_TOKEN</span><br></pre></td></tr></table></figure>
-
-<p>上面 URL 中，grant_type参数为refresh_token表示要求更新令牌，client_id参数和client_secret参数用于确认身份，refresh_token参数就是用于更新令牌的令牌；<br>B 网站验证通过以后，就会颁发新的令牌。</p>
+        <h4 id="常见数据结构"><a href="#常见数据结构" class="headerlink" title="常见数据结构"></a>常见数据结构</h4><ul>
+<li>字符串 string</li>
+<li>字典 hash</li>
+<li>列表 list</li>
+<li>集合 Set</li>
+<li>有序集合 sortedSet</li>
+</ul>
 
       
     </div>
@@ -329,7 +324,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/oauth2-0/" rel="tag"># oauth2.0</a>
+            <a href="/tags/Redis/" rel="tag"># Redis</a>
           
         </div>
       
@@ -342,8 +337,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/26/vue-select/" rel="next" title="vue select">
-                <i class="fa fa-chevron-left"></i> vue select
+              <a href="/2019/11/19/网络协议-网络层/" rel="next" title="网络协议-网络层">
+                <i class="fa fa-chevron-left"></i> 网络协议-网络层
               </a>
             
           </div>
@@ -351,10 +346,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/04/OAuth2-0-授权码/" rel="prev" title="OAuth2.0-授权码【转】">
-                OAuth2.0-授权码【转】 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -477,7 +468,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#作用"><span class="nav-number">1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#令牌与密码的区别"><span class="nav-number">3.</span> <span class="nav-text">令牌与密码的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取令牌方式"><span class="nav-number">4.</span> <span class="nav-text">获取令牌方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#令牌使用"><span class="nav-number">5.</span> <span class="nav-text">令牌使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#令牌更新"><span class="nav-number">6.</span> <span class="nav-text">令牌更新</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#常见数据结构"><span class="nav-number">1.</span> <span class="nav-text">常见数据结构</span></a></li></ol></div>
             
 
           </div>
